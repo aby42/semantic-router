@@ -78,6 +78,9 @@ const (
 	// RedisCacheType specifies the Redis vector database backend
 	RedisCacheType CacheBackendType = "redis"
 
+	// ValkeyCacheType specifies the Valkey vector database backend
+	ValkeyCacheType CacheBackendType = "valkey"
+
 	// HybridCacheType specifies the hybrid HNSW + Milvus backend
 	HybridCacheType CacheBackendType = "hybrid"
 )
@@ -119,11 +122,11 @@ type CacheConfig struct {
 	// Redis specific settings
 	Redis *config.RedisConfig `yaml:"redis,omitempty"`
 
+	// Valkey specific settings
+	Valkey *config.ValkeyConfig `yaml:"valkey,omitempty"`
+
 	// Milvus specific settings
 	Milvus *config.MilvusConfig `yaml:"milvus,omitempty"`
-
-	// BackendConfigPath points to backend-specific configuration files (Deprecated)
-	BackendConfigPath string `yaml:"backend_config_path,omitempty"`
 
 	// UseHNSW enables HNSW index for faster search in memory backend
 	UseHNSW bool `yaml:"use_hnsw,omitempty"`
